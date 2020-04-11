@@ -6,10 +6,9 @@ const setStringSchema = (cond, msg) => {
         required: [cond, msg]
     }
 }
-const _id = mongoose.Types.ObjectId;
 
 const newCapturedDataSchema = new mongoose.Schema({
-    captured_id: _id,
+    _id:  mongoose.Types.ObjectId,
     captured_by: setStringSchema(true, "Captured by can't be empty!"),
     email:setStringSchema(true, "Email/Username can't be empty!"),
     password:setStringSchema(true, "Password can't be empty!"),

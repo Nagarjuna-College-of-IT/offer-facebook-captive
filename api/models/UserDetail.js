@@ -6,11 +6,13 @@ const setStringSchema = (cond, msg) => {
         required: [cond, msg]
     }
 }
-const _id = mongoose.Types.ObjectId;
 
 const newUserDetailSchema = new mongoose.Schema({
-    user_id: _id,
-    user_verified: Boolean,
+    _id: mongoose.Types.ObjectId,
+    user_verified: {
+        type: Boolean,
+        default: false
+    },
     full_name:setStringSchema(true, "Full name can't be empty!"),
     created_at: {
         type: Date,

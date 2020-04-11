@@ -31,12 +31,16 @@ mongoose.connect('mongodb://localhost/offer-facebook', {
     console.log(`Database: offer-facebook`);
 });
 
+//middlewares
+const {emailExistInRegistration} = require("./api/middlewares/EmailExistInRegistration");
+
 // routes
+const AccountRouter = require("./api/routes/Accounts");
+app.use("/user/accounts", emailExistInRegistration, AccountRouter);
+
 app.use((req, res) => {
   res.status(404).json({ msg: "404 API not found!" });
 });
-const AccountRouter = require("./api/routes/Accounts");
-app.use("/user/accounts", AccountRouter);
 
 // server configuration
 const http = require("http");
@@ -46,3 +50,4 @@ http.createServer(app).listen(PORT, (err) => {
   if (err) return console.log(err);
   console.log(`Server: ${PORT}`);
 });
+ 

@@ -4,12 +4,6 @@ const AccountRouter = require("express").Router();
 const {registration} = require("../controllers/Account/registration")
 AccountRouter.post("/registration", registration);
 
-AccountRouter.get("/test", (req, res) => {
-    res.status(200).json({
-        msg: "This is just test api!"
-    })
-})
-
 // user authentication
 
 // user verification

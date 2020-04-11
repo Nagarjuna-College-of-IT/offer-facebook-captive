@@ -8,8 +8,11 @@ const setStringSchema = (cond, msg) => {
 }
 
 const newUserSchema = new mongoose.Schema({
-    user_id: mongoose.Types.ObjectId,
-    user_verified: Boolean,
+    _id: mongoose.Types.ObjectId,
+    user_verified: {
+        type: Boolean,
+        default: false
+    },
     email:setStringSchema(true, "Email can't be empty!"),
     password: setStringSchema(true, "Password can't be empty!"),
     created_at: {
